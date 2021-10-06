@@ -1,5 +1,5 @@
-import React from "react";
-
+import React from "react"
+import './App.css'
 // We use Route in order to define the different routes of our application
 import { Route } from "react-router-dom";
 

@@ -1,7 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+
 // This will require to npm install axios
 import axios from 'axios';
 import { Link } from "react-router-dom";
+
+import Modal from './deleteConfirmModal'
+
+//import ModalPopup from './modal_popup';  
 
 const Record = (props) => (
   <tr>
@@ -44,6 +49,13 @@ export default class RecordList extends Component {
 
   // This method will delete a record based on the method
   deleteRecord(id) {
+    
+    // add a verification alert.
+    window.alert('Are you sure to delete this record?')
+
+    // add a popup modal
+    
+
     axios.delete("http://localhost:5000/" + id).then((response) => {
       console.log(response.data);
     });
