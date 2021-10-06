@@ -43,7 +43,7 @@ recordRoutes.route("/record/:id").get(function (req, res) {
 
 // This section will help you create a new record.
 // The 'employees' symbol should be removed, because the getDb() does not receive any params.
-recordRoutes.route("/record/add").post(function (req, res) {
+recordRoutes.route("/record/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
     person_name: req.body.person_name,
@@ -52,6 +52,7 @@ recordRoutes.route("/record/add").post(function (req, res) {
   };
   db_connect.collection("records").insertOne(myobj, function (err, res) {
     if (err) throw err;
+    response.json(res);
   });
 });
 
@@ -60,7 +61,7 @@ recordRoutes.route("/record/add").post(function (req, res) {
 // req.params.id should be used for identifying the record, 
 // because there is not any req.body.id passed from the front-end.
 // The 'employees' symbol should be removed, because the getDb() does not receive any params.
-recordRoutes.route("/update/:id").post(function (req, res) {
+recordRoutes.route("/update/:id").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   let newvalues = {
@@ -75,18 +76,20 @@ recordRoutes.route("/update/:id").post(function (req, res) {
     .updateOne(myquery, newvalues, function (err, res) {
       if (err) throw err;
       console.log("1 document updated");
+      response.json(res);
     });
 });
 
 // This section will help you delete a record
 // The 'employees' symbol should be removed, because the getDb() does not receive any params.
 
-recordRoutes.route("/:id").delete((req, res) => {
+recordRoutes.route("/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect.collection("records").deleteOne(myquery, function (err, obj) {
     if (err) throw err;
     console.log("1 document deleted");
+    response.json(obj);
   });
 });
 
