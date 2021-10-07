@@ -11,7 +11,7 @@ import RecordList from "./components/recordList";
 
 const App = () => {
   return (
-    <div>
+    <div className="first-layer">
       <Navbar />
       <Route exact path="/">
         <RecordList />

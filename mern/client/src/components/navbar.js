@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 // Here, we display our Navbar
 const Navbar = () => {
   return (
-    <div>
+    <div className="second-layer">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <NavLink className="navbar-brand" to="/">
           MongoDB

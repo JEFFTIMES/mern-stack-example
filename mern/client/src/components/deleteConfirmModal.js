@@ -1,7 +1,10 @@
 import React from 'react'
 import './deleteConfirmModal.css'
+// import { useEffect } from 'react'
+
 
 function Modal(props) {
+
   return (
     <div className="modal-background">
       <div className="modal-container">
@@ -9,8 +12,13 @@ function Modal(props) {
           <button 
             id="btn-close" 
             onClick={ () => {
-              props.popupModal(false) 
-              props.deleteItem(false)
+
+              // dev: checking the _id. 
+              console.log('CLOSE clicked: ', props.deleteRecordId)
+              
+              props.setPopupModal(false) 
+              props.setConfirmDeletion(false)
+              // props.setDeleteRecordId(null)
             }}
           > 
             X 
@@ -26,17 +34,27 @@ function Modal(props) {
           <button 
             id="btn-cancel" 
             onClick={ () => {
-              props.popupModal(false)
-              props.deleteItem(false) 
+
+              // dev: checking the _id. 
+              console.log('CANCEL clicked: ', props.deleteRecordId)
+
+              props.setPopupModal(false)
+              props.setConfirmDeletion(false)
+              // props.setDeleteRecordId(null) 
             }}
           >
             Cancel
           </button>
           <button 
             id="btn-confirm"
-            onClick={ () => { 
-              props.deleteItem(true)
-              props.popupModal(false)
+            onClick={ () => {
+              
+              // dev: checking the _id. 
+              // console.log('CONFIRM clicked: ', props.deleteRecordId)
+
+              // setting deleteRecordId to null and toggle the modal off.
+              props.setPopupModal(false)
+              props.setConfirmDeletion(true)             
             }}
           >
             Confirm
