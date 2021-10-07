@@ -23,6 +23,10 @@ npm install
 npm start
 ```
 
+## Add a Modal for user to confirm the deletion
+
+
+
 ## Disclaimer
 
 Use at your own risk; not a supported MongoDB product
